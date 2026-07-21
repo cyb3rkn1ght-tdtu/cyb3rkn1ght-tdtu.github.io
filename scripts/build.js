@@ -19,9 +19,11 @@ function walkDir(dir) {
 
 function extractHeadings(markdown) {
   const headings = [];
+  // Strip code blocks so we don't extract headings from inside them
+  const mdWithoutCode = markdown.replace(/```[\s\S]*?```/g, '');
   const regex = /^(#{1,2})\s+(.+)$/gm;
   let match;
-  while ((match = regex.exec(markdown)) !== null) {
+  while ((match = regex.exec(mdWithoutCode)) !== null) {
     const text = match[2].trim();
     // Replicate our custom slugify in reading.html
     const id = 's-' + encodeURIComponent(text.replace(/\s+/g, '-').toLowerCase());

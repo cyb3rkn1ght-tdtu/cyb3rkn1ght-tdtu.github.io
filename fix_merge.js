@@ -32,6 +32,7 @@ fs.readdirSync(srcDir).forEach(dir => {
       }
     });
     if (mdFiles.length > 0) {
+      mdFiles.sort();
       categories[dir] = mdFiles;
     }
     
