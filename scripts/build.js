@@ -151,6 +151,18 @@ async function build() {
       const firstWriteup = makeWriteupCard(writeupPosts[0]);
       // Find the ctf-split section and replace the Card there
       indexHtml = indexHtml.replace(/<Card chip=\{\{jp:"連載"[^>]*\/>/s, firstWriteup);
+
+      // Generate BOARD array from the remaining writeups
+      const boardPosts = writeupPosts.slice(1);
+      const boardArrayStr = boardPosts.map((p, index) => {
+        let d = "中"; let dc = "mid";
+        if (p.difficulty === 'hard') { d = "難"; dc = "hard"; }
+        if (p.difficulty === 'easy') { d = "易"; dc = "easy"; }
+        return `{n:"${String(index + 1).padStart(2, '0')}", chal:"${p.title.replace(/"/g, '\\"')}", cat:"${p.categoryEn}", d:"${d}", dc:"${dc}", href:"writeup/${p.slug}.html"}`;
+      }).join(',\n');
+      indexHtml = indexHtml.replace(/const BOARD = \[.*?\];/s, `const BOARD = [\n${boardArrayStr}\n];`);
+    } else {
+      indexHtml = indexHtml.replace(/const BOARD = \[.*?\];/s, `const BOARD = [];`);
     }
     
     // Generate HERO object
