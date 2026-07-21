@@ -27,16 +27,6 @@ difficulty: "hard"
 
 ## CTF Write-up: Pickles
 
-+++
-title = 'Pickles — Write-up'
-date = '2026-07-14T08:03:00+07:00'
-draft = false
-tags = ['GrodnoCTF', 'pickle', 'python', 'reverse', 'backdoor']
-categories = ['Reverse Engineering', 'Web']
-+++
-
-
-
 **Category:** Reverse Engineering / Web / Misc
 **Flag format:** `grodno{...}`
 **Flag cuối:** `grodno{p1ckl3_b4ckd00r_supply_ch41n}`
@@ -331,16 +321,6 @@ File `.pyc` không phải bảo vệ thực sự — nó chỉ là obfuscation r
 - Scripts: `read_pkl.py`, `send.py`, `solution.py`
 
 ## CTF Write-up: Slop
-
-+++
-title = 'Slop — Write-up'
-date = '2026-07-14T01:41:05+07:00'
-draft = false
-tags = ['GrodnoCTF', 'llm', 'qwen']
-categories = ['AI', 'Steganography']
-+++
-
-
 
 **Category:** AI / Steganography / Misc
 **Flag format:** `grodno{...}`
@@ -1381,16 +1361,6 @@ grodno{571ll_4l1v3_bu7_g14d05_k3375_r3w5171ng_m35s4g35}
 
 ## CTF Write-up: After The Swarm
 
-+++
-title = 'After The Swarm — Write-up'
-date = '2026-07-14T01:01:48+07:00'
-draft = false
-tags = ['GrodnoCTF', 'pcap', 'mirai']
-categories = ['Forensics', 'Networking', 'IoT']
-+++
-
-
-
 **Category:** Forensics / Network
 **Flag format:** `grodno{artifact_httpport_c2port_c2len_s2len1_s2len2_s2len3}`
 **Flag cuối:** `grodno{armv6l_51370_50178_11_13_4_6}`
@@ -1661,16 +1631,6 @@ Khi capture trên nhiều card mạng ảo/vật lý cùng lúc, file pcap sẽ 
 
 ## CTF Write-up: Invoice Without a Bank
 
-+++
-title = 'Invoice Without a Bank — Write-up'
-date = '2026-07-14T01:14:58+07:00'
-draft = false
-tags = ['email', 'GrodnoCTF', 'eml', 'phishing']
-categories = ['Forensics']
-+++
-
-
-
 **Category:** Email Forensics
 **Flag format:** `grodno{filename_subjectid}`
 **Flag cuối:** `grodno{Vl6s3kCIKaUvwaUAeY.pdf_6ZFYeMmltso}`
@@ -1814,16 +1774,6 @@ Nếu chỉ grep `Fatura Emitida -` mà không kèm `Subject:` phía trước, l
 
 ## [Grodno CTF] Philologist - Writeup (Forensics)
 
-+++
-title = 'Philologist — Write-up'
-date = '2026-07-13T23:46:54+07:00'
-draft = false
-tags = ['GrodnoCTF', 'git', 'git-log']
-categories = ['Forensics']
-+++
-
-
-
 **Author:** @meier | **Difficulty:** Medium | **Category:** Forensics / Misc
 
 ---
@@ -1907,16 +1857,6 @@ Việc cuối cùng là bọc chuỗi này vào định dạng `grodno{}` theo y
 **Flag:** `grodno{1o9f1a9}`
 
 ## CTF Write-up: Pinned to Yesterday
-
-+++
-title = 'Pinned to Yesterday — Write-up'
-date = '2026-07-13T23:56:25+07:00'
-draft = false
-tags = ['GrodnoCTF', 'windows', 'registry', 'prefetch', 'shellbags']
-categories = ['Forensics']
-+++
-
-
 
 **Category:** Windows Forensics
 **Flag format:** `grodno{pdf_folder_exe}`
@@ -2242,16 +2182,6 @@ Công cụ `reglookup` đọc trực tiếp file hive `.DAT` và trả về dạ
 
 ## CTF Write-up: Prompt and Pretext
 
-+++
-title = 'Prompt and Pretext — Write-up'
-date = '2026-07-14T01:18:21+07:00'
-draft = false
-tags = ['GrodnoCTF', 'windows', 'powershell', 'evtx', 'credential-phishing']
-categories = ['Forensics']
-+++
-
-
-
 **Category:** Windows Forensics / PowerShell
 **Flag format:** `grodno{function_marker}`
 **Flag cuối:** `grodno{Invoke-LoginPrompt_R{START_PROCESS}}`
@@ -2467,16 +2397,6 @@ Nếu mục tiêu là kéo ra mã nguồn script hay các chuỗi đặc trưng,
 Chuỗi `R{START_PROCESS}` không phải lỗi ngẫu nhiên — đây là dấu vết của builder template. Gặp các chuỗi dạng `{SOMETHING}`, `{{PLACEHOLDER}}`, `%%TOKEN%%` trong script độc hại, khả năng cao đó là chỗ builder chưa điền shellcode thật vào. Biết điều này giúp nhận ra đây là payload chưa hoàn chỉnh, và attacker đang trong giai đoạn test hoặc chuẩn bị.
 
 ## CTF Write-up: The USB That Wouldn't Repeat
-
-+++
-title = "The USB That Wouldn't Repeat — Write-up"
-date = '2026-07-14T01:23:20+07:00'
-draft = false
-tags = ['GrodnoCTF', 'disk-imaging', 'ftk-imager', 'usb']
-categories = ['Forensics']
-+++
-
-
 
 **Category:** Forensics / Disk Imaging
 **Flag format:** `grodno{md5_first_md5_second}`
