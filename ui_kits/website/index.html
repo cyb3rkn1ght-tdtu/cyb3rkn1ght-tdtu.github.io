@@ -75,23 +75,6 @@
   .score .sft .k{color:var(--ink-3)}
   .score .sft .v{font-weight:700;color:var(--ink)}
   .score .sft .v.acc{color:var(--accent)}
-  .board{width:100%;border-collapse:collapse;border:var(--bw-rule) solid var(--ink);background:var(--card);margin-top:24px}
-  .board thead th{font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-2);text-align:left;padding:11px 14px;background:var(--paper-2);border-bottom:var(--bw-rule) solid var(--ink)}
-  .board tbody td{padding:11px 14px;border-bottom:1px solid var(--rule);font-family:var(--font-body);font-size:15px;vertical-align:middle}
-  .board tbody tr:last-child td{border-bottom:none}
-  .board tbody tr{transition:background .12s;cursor:pointer}
-  .board tbody tr:hover{background:var(--accent-soft)}
-  .board .num{font-family:var(--font-display);font-size:19px;color:var(--accent);width:48px}
-  .board .chal{font-weight:700}
-  .catchip{font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:1px;padding:3px 7px;border:1px solid var(--accent-line);color:var(--accent);border-radius:2px;text-transform:uppercase;white-space:nowrap}
-  .dseal{font-family:var(--font-jp);font-weight:800;font-size:13px;border:2px solid;padding:2px 6px 1px;border-radius:2px;display:inline-block;line-height:1}
-  .dseal.hard{color:var(--seal-hard);border-color:var(--seal-hard)}
-  .dseal.mid{color:var(--seal-mid);border-color:var(--seal-mid)}
-  .dseal.easy{color:var(--seal-easy);border-color:var(--seal-easy)}
-  .flag-ok{font-family:var(--font-mono);font-size:12px;color:var(--ink);font-weight:600}
-  .flag-ok::before{content:"\25C6 ";color:var(--accent)}
-  .board .go{font-family:var(--font-mono);font-size:15px;color:var(--accent);text-align:right}
-  .board-cap{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);margin-top:10px;display:flex;justify-content:space-between}
 
   /* ===== landing cover (first viewport, scrolls into archive) ===== */
   .cover{position:relative;height:100vh;min-height:600px;overflow:hidden;background:var(--paper);background-image:var(--paper-grain);background-size:4px 4px}
@@ -282,17 +265,6 @@
                 <span className="k">評価 <span className="v acc">S</span></span>
               </div>
             </div>
-          </div>
-          <div style={{marginTop:"32px"}}>
-            <table className="board">
-              <thead><tr><th>#</th><th>Challenge</th><th>Category</th><th>Diff</th><th>Flag</th><th></th></tr></thead>
-              <tbody>
-                {BOARD.map(r=>(
-                  <tr key={r.n} onClick={()=>window.location.href=r.href}><td className="num">{r.n}</td><td className="chal">{r.chal}</td><td><span className="catchip">{r.cat}</span></td><td><span className={"dseal "+r.dc}>{r.d}</span></td><td className="flag-ok">captured</td><td className="go">→</td></tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="board-cap" style={{marginTop:"12px"}}><span>More challenges hidden</span><span><a href="archive.html" style={{color:"var(--accent)", textDecoration:"none"}}>xem toàn bộ bảng →</a></span></div>
           </div>
         </section>
       );
