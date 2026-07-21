@@ -1,7 +1,7 @@
 ---
 title: "Junior Crypt 2026 Writeups"
 date: "2026.07.21"
-author: "admin"
+author: "Cyberknight"
 categoryEn: "CTF"
 categoryJp: "連載"
 difficulty: "hard"
@@ -735,7 +735,7 @@ Subword tokenizer gộp nhiều ký tự thành một token. 8 rank trong bài n
 
 # Cryptography
 
-## Crypto001 (Crypto)
+## Crypto001
 
 ### 1. Thông tin tổng quan (nếu có)
 - **Category:** Cryptography
@@ -851,7 +851,7 @@ grodno{7h15_w45_4_7r1umph_bu7_7h3_533d_w45_700_5m4ll}
 ### 7. Tham khảo
 - [Linear Congruential Generator (LCG)](https://en.wikipedia.org/wiki/Linear_congruential_generator)
 
-## Crypto003 (Crypto)
+## Crypto003
 
 ### 1. Thông tin tổng quan (nếu có)
 - **Category:** Cryptography
@@ -948,7 +948,7 @@ grodno{meowMeoWmEOwmeeoowMEOWWW}
 - [Insecure Pseudo-random Number Generation](https://en.wikipedia.org/wiki/Pseudorandom_number_generator#Cryptographically_secure_pseudorandom_number_generators)
 - Khai thác lỗ hổng sinh số ngẫu nhiên dựa trên thời gian.
 
-## Crypto004 (Crypto)
+## Crypto004
 
 ### 1. Thông tin tổng quan (nếu có)
 - **Category:** Cryptography
@@ -1088,7 +1088,7 @@ grodno{n3ur070x1n_d14gn0571c5_l34k_7hr0ugh_71m1ng_4l0n3}
 - [Padding Oracle Attack qua Timing (Wikipedia)](https://en.wikipedia.org/wiki/Padding_oracle_attack)
 - Phân tích Kênh kề Thời gian (Timing Side-Channel Attack).
 
-## Crypto005 (Crypto)
+## Crypto005
 
 ### 1. Thông tin tổng quan (nếu có)
 - **Category:** Cryptography
@@ -1230,7 +1230,7 @@ grodno{c0mp4n10n_cub3_7h15_15_57r1c7ly_4_m4ny_71m3_p4d}
 - [Stream Cipher Attack (Many-Time Pad)](https://en.wikipedia.org/wiki/Stream_cipher_attacks)
 - [Crib Dragging Technique](https://en.wikipedia.org/wiki/Crib_(cryptanalysis)) (Kỹ thuật Kéo nôi thường thấy để giải Many-Time Pad).
 
-## Still Alive (Crypto)
+## Still Alive
 
 ### 1. Thông tin tổng quan
 
@@ -1772,7 +1772,7 @@ File `.eml` có đính kèm sẽ nhúng toàn bộ dữ liệu nhị phân vào 
 **3. Thêm prefix header khi grep để tránh lọc trúng nội dung body**
 Nếu chỉ grep `Fatura Emitida -` mà không kèm `Subject:` phía trước, lệnh có thể khớp cả với nội dung HTML hay plain-text bên trong email. Với email phishing, nội dung body thường lặp lại từ khóa của tiêu đề để tạo urgency — nên grep `Subject: Fatura Emitida -` để chắc chắn chỉ lọc header.
 
-## [Grodno CTF] Philologist (Forensics)
+## Philologist
 
 **Author:** @meier | **Difficulty:** Medium | **Category:** Forensics / Misc
 
@@ -3235,7 +3235,7 @@ Kể từ Step 21, người biên soạn bắt đầu thay thế dần các ký 
 
 # OSINT
 
-## [Grodno CTF] Strongest Beaver (OSINT)
+## Strongest Beaver
 
 **Author:** @hckerror | **Difficulty:** Hard | **Category:** OSINT
 
@@ -3322,7 +3322,7 @@ grodno{Alfa_Bank}
 
 2. Hãy thử những kết quả có thể
 
-## [Grodno CTF] WhoAmI (OSINT)
+## WhoAmI
 
 **Author:** @vvanuss | **Difficulty:** Easy | **Category:** OSINT
 
@@ -3366,7 +3366,7 @@ grodno{Russell_Rogers}
 
 # Pwn
 
-## Clockwork Vault (Pwn)
+## Clockwork Vault
 
 ### 1. Thông tin tổng quan
 - **Category:** Pwn (Binary Exploitation)
@@ -3522,7 +3522,7 @@ grodno{fake_flag}
 ```
 *(Flag thật đã submit trực tiếp lúc thi qua service của BTC, không lưu lại; giá trị trên chỉ minh hoạ định dạng.)*
 
-## Museum of Echoes (Pwn)
+## Museum of Echoes
 
 ### 1. Thông tin tổng quan
 - **Category:** Pwn (Binary Exploitation)
@@ -3736,7 +3736,7 @@ grodno{fake_flag}
 ```
 *(Flag thật đã submit trực tiếp lúc thi qua service của BTC, không lưu lại; giá trị trên chỉ minh hoạ định dạng.)*
 
-## House of Mirage (Pwn)
+## House of Mirage
 
 ### 1. Thông tin tổng quan
 - **Category:** Pwn (Binary Exploitation)
@@ -3946,7 +3946,7 @@ grodno{fake_flag}
 ```
 *(Flag thật đã submit trực tiếp lúc thi qua service của BTC, không lưu lại; giá trị trên chỉ minh hoạ định dạng.)*
 
-## Deep Port (Pwn)
+## Deep Port
 
 ### 1. Thông tin tổng quan
 - **Category:** Pwn (Binary Exploitation)
@@ -4139,7 +4139,7 @@ grodno{fake_flag}
 ```
 *(Flag thật đã submit trực tiếp lúc thi qua service của BTC, không lưu lại; giá trị trên chỉ minh hoạ định dạng.)*
 
-## Red Tide Terminal (Pwn)
+## Red Tide Terminal
 
 ### 1. Thông tin tổng quan
 - **Category:** Pwn (Binary Exploitation)
@@ -4300,7 +4300,7 @@ grodno{fake_flag}
 ```
 *(Flag thật đã submit trực tiếp lúc thi qua service của BTC, không lưu lại; giá trị trên chỉ minh hoạ định dạng.)*
 
-## Red Tide Terminal Revenge (Pwn)
+## Red Tide Terminal Revenge
 
 ### 1. Thông tin tổng quan
 - **Category:** Pwn (Binary Exploitation)
@@ -4788,7 +4788,7 @@ print(flag_str)
 ```
 khi chạy ta thu được `grodno{Fabrice_Bellard_is_a_really_cool_programmer}`
 
-## Rev004: WrongKube+++ (Reverse Engineering)
+## WrongKube+++
 
 ### 1. Thông tin tổng quan
 - **Category:** Reverse Engineering
@@ -4882,7 +4882,7 @@ grodno{wr0ngkub3ppp_4by55_0r4cl3_qu0rum_3xtr3m3}
 ### 7. Tham khảo
 - Static Analysis and Cryptography Bypass in Reverse Engineering.
 
-## Rev003: WrongKube++ (Reverse Engineering)
+## WrongKube++
 
 ### 1. Thông tin tổng quan
 - **Category:** Reverse Engineering
@@ -4977,7 +4977,7 @@ grodno{wr0ngkub3pp_5p3ctr4l_qu0rum_0v3rdr1v3}
 ### 7. Tham khảo
 - Kỹ thuật dịch ngược Data Flow Analysis (Phân tích Luồng dữ liệu).
 
-## Rev002: WrongCube+ (Reverse Engineering)
+## WrongCube+
 
 ### 1. Thông tin tổng quan
 - **Category:** Reverse Engineering
