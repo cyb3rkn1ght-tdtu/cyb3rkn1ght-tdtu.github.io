@@ -2626,8 +2626,9 @@ File log secondrun có thêm bước xác minh sau acquisition: FTK tính lại 
 
 # Miscellaneous
 
-## 1. Thông tin tổng quan
+## Invisible Editor
 
+### 1. Thông tin tổng quan
 * Challenge: Invisible Editor
 * Category: Misc
 * Description
@@ -4457,7 +4458,8 @@ grodno{fake_flag}
 
 # Reverse Engineering
 
-## Challenge info
+## Write The Кодэ
+
 
 ---
 > Date: 15/7/2026 :beaver:     
@@ -4469,7 +4471,7 @@ grodno{fake_flag}
 --- 
 
 
-
+### Challenge info
 
 ![database](../images/writeup/reverse-engineering/challenge_info.png)
 
@@ -4787,6 +4789,7 @@ for i in range(0, 51):
 print(flag_str)
 ```
 khi chạy ta thu được `grodno{Fabrice_Bellard_is_a_really_cool_programmer}`
+
 
 ## WrongKube+++
 
