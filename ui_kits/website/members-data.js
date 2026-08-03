@@ -14,11 +14,11 @@ window.members = [
   { no: "NO.03", nm: "BouMiu", rl: "secretary", km: "爆破", photo: "../../assets/mem3.png", email: "nguyenquynhanhbm@gmail.com", q: "Time will narrow every disparity. Một byte tràn là đủ.", tn: "2023.09" },
   { no: "NO.04", nm: "toobunbo", rl: "Vice President · Crypto", km: "暗号", photo: "../../assets/pho-goat.png", q: "Toán học không biết nói dối. Chỉ có triển khai mới sai.", tn: "2024.01" },
   { no: "NO.05", nm: "codex", rl: "Mentor · Forensics", km: "鑑識", photo: "../../assets/mem5.2.png", q: "Mọi thứ đều để lại dấu vết. Việc của tôi là đọc chúng.", tn: "2024.02" },
-  { no: "NO.06", nm: "Hoàng Chí Thiện", rl: "Management · Reverse", km: "解析", photo: "../../assets/hoang-thien.png", q: "Chưa viết ghi chú. Đang mài kiếm.", tn: "2024.07" },
-  { no: "NO.07", nm: "Võ Văn Khôi Nguyên", rl: "Network", km: "通信", photo: "../../assets/khoi-nguyen.png", q: "Gói tin không nói dối. Người cấu hình chúng thì có.", tn: "2024.03" },
-  { no: "NO.08", nm: "Phạm Thành Nhân", rl: "OSINT", km: "諜報", photo: "../../assets/thanh-nhan.png", q: "Câu trả lời luôn công khai — chỉ là chưa ai chịu ghép lại.", tn: "2024.03" },
-  { no: "NO.09", nm: "Mai Nguyễn Thái Hà", rl: "Mobile", km: "携帯", photo: "../../assets/thai-ha.jpg", q: "Cái app trong túi bạn tin tưởng quá nhiều thứ.", tn: "2024.04" },
-  { no: "NO.10", nm: "Nguyễn Hữu Chính", rl: "Hardware", km: "回路", photo: "../../assets/huu-chinh.png", q: "Firmware là phần mềm quên mất rằng nó đang bị nhìn.", tn: "2024.05" },
+  { no: "NO.06", nm: "Katsuo", rl: "Management · Reverse", km: "解析", photo: "../../assets/hoang-thien.png", q: "Chưa viết ghi chú. Đang mài kiếm.", tn: "2024.07" },
+  { no: "NO.07", nm: "Nova", rl: "Network", km: "通信", photo: "../../assets/khoi-nguyen.png", q: "Gói tin không nói dối. Người cấu hình chúng thì có.", tn: "2024.03" },
+  { no: "NO.08", nm: "zeds", rl: "OSINT", km: "諜報", photo: "../../assets/thanh-nhan.png", q: "Câu trả lời luôn công khai — chỉ là chưa ai chịu ghép lại.", tn: "2024.03" },
+  { no: "NO.09", nm: "Johan", rl: "Network", km: "携帯", photo: "../../assets/thai-ha.jpg", q: "Cái app trong túi bạn tin tưởng quá nhiều thứ.", tn: "2024.04" },
+  { no: "NO.10", nm: "Cenoshuke", rl: "Hardware", km: "回路", photo: "../../assets/huu-chinh.png", q: "Firmware là phần mềm quên mất rằng nó đang bị nhìn.", tn: "2024.05" },
   { no: "NO.11", nm: "orin", rl: "Blockchain", km: "連鎖", q: "Bất biến không có nghĩa là bất khả xâm phạm.", tn: "2024.06" },
 ];
 
