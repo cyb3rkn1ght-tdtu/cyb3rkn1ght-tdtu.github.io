@@ -25,6 +25,19 @@ window.members = [
 const M_KM = ["修", "習", "新", "初", "門", "芽", "若", "進", "志", "礎", "練", "始", "士", "歩", "勤", "伸", "望", "炎", "風", "雷", "華", "刃", "岩"];
 const M_ROLES = ["Web", "Pwn", "Rev", "Crypto", "Forensics", "Network", "OSINT", "Mobile", "Misc"];
 const M_Q = ["Chưa viết ghi chú. Đang mài kiếm.", "Học để phá, phá để hiểu.", "Mỗi CTF là một chương mới.", "Còn noob, nhưng không còn lâu nữa."];
+const M_NAMES = [
+  "Thiên Quý",
+  "Triệu Minh Trí",
+  "Khang Phùng",
+  "Thắng Công",
+  "Nguyễn Anh Quân",
+  "Gia Khang",
+  "Phan Tây",
+  "Dat Thanh Nguyen",
+  "Le Nhat Anh",
+  "Phát Trần Thành",
+  "Minh Trí Đinh",
+];
 const M_PHOTOS = [
   "../../assets/Thiên Quý.png",
   "../../assets/Triệu Minh Trí.jpg",
@@ -42,7 +55,7 @@ const M_PHOTOS = [
 for (let i = 0; i < 22; i++) {
   const member = {
     no: "NO." + String(i + 12).padStart(2, "0"),
-    nm: "kn_" + String(i + 12).padStart(2, "0"),
+    nm: i < M_NAMES.length ? M_NAMES[i] : "kn_" + String(i + 12).padStart(2, "0"),
     rl: M_ROLES[i % M_ROLES.length],
     km: M_KM[i % M_KM.length],
     q: M_Q[i % M_Q.length],
